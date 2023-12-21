@@ -39,26 +39,6 @@ body {
     padding: 5px;
   }
 
-  .maui-div {
-    text-align: center;
-    line-height: 1;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 5px;
-  }
-
-  .maui-div h1 {
-    font-size: 4em;
-  }
-
-  .maui-div img {
-    width: 90%;
-    padding: 0%;
-    align-self: center;
-    border-radius: 20px;
-  }
-
   .base-image {
     width: 20%;
     border-radius: 10px;
@@ -94,89 +74,19 @@ body {
     text-align: center;
   }
 
-  .category-header {
-    font-family: Verdana;
-    font-size: 4em;
-    font-weight: bold;
-    margin-top: 60px;
-    margin-bottom: 20px;
+  .title-div {
     text-align: center;
+    border: 3px double green;
+    border-radius: 20%;
   }
 
-  .beverage-header-div {
-    margin-top: 30px;
-    width: 100%;
-    display: grid;
+  .title-div h1 {
+    font-size: 5em;
+    font-weight: bold;
+    margin: 2px;
+    text-align: center;
     justify-content: center;
-  }
-
-  .beverage-header-div h1 {
-    font-size: 3em;
-    font-weight: bold;
-    margin: 2px;
-    text-align: center;
-  }
-
-  .beverage-item {
-    margin-top: 30px;
-    width: 100%;
-    display: grid;
-    justify-content: center;
-  }
-
-  .beverage-item hr {
-    margin-top: 60px;
-    width: 200px;
-    border-top: 2px solid lightblue;
-  }
-
-  .beverage-item h1 {
-    font-size: 3em;
-    font-weight: bold;
-    margin: 2px;
-    text-align: center;
-  }
-
-  .beverage-item h2 {
-    font-size: 2em;
-    font-weight: bolder;
-    margin: 2px;
-    text-align: center;
-  }
-
-  .beverage-item p {
-    font-size: 2em;
-    font-weight: normal;
-    font-family: cursive;
-    text-align: center;
-    line-height: 1;
-    padding: 0px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    padding-left: 30%;
-    padding-right: 30%;
-  }
-
-  .wifi-div {
-    text-align: center;
-    line-height: 1;
-    padding: 0px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-  }
-
-  .wifi-div h1 {
-    font-size: 4em;
-  }
-
-  .wifi-div p {
-    font-size: 3em;
-    text-align: center;
-  }
-
-  .wifi-div img {
-    padding-top: 100px;
-    width: 30%;
+    font-family: Papyrus;
   }
 
   .bottom-div {
