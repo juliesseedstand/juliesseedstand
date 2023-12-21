@@ -5,7 +5,8 @@
         <title>Julie's Seed Stand</title>
         <link href="css/styles.css" rel="stylesheet" type="text/css">
         <link href="css/tabs.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript">uciedtukcgrbkf
+        <script type="text/javascript" src="scripts/seeds.js"></script>
+        <script type="text/javascript">
           /*
             Load function reads the thumbnails from a list and puts them on a selector screen.
             */
@@ -16,11 +17,29 @@
                     document.getElementById("top-div").remove();
                 }, 10000);
                 */
+                populateDiv("seeds-layout",seeds['products'],"seed-item");
+            }
+
+            function populateDiv(divName, array, divClass) {
+                var div = document.getElementById(divName);
+                array.forEach(element => {
+                    div.innerHTML = div.innerHTML + 
+                    "<div class=\"" + divClass + "\"> " +
+                    "<center><h2>" + element.productName + "</h2></center>" +
+                    "<center><img src=\"" + element.imagePath + "\"> </center>" +
+                    "<h2>Description</h2>" +
+                    "<p class=\"description\">" + element.description + "</p>" +
+                    "<h2>Planting</h2>"
+                    "<p class=\"planting\">" + element.planting + "</p>"
+                    " <p> price: " + element.price + "</p>" +
+                    " <p> Availability: " + element.availability + "</p>" +
+                    "</div>";
+                });
             }
 
         </script>
     </head>
-<body onload="load()">
+<body onload="load()" >
     <div id="top-div" class="top-div">
         <img id="banner-image" src="Resources/juliesseedstand.jpg" alt="Julie's Seed Stand" class="banner">
         <br />
@@ -34,6 +53,7 @@
             <center><h1 class="title">Julie's Seed Stand</h1></center>
         </div>
     </div>
-    
+    <div id="seeds-layout" class="seeds-layout">
+    </div>
 </body>
 </html>

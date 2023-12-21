@@ -13,9 +13,9 @@ html {
 */    
 body {
     display: block;
-    background-color: white;
     color: black;
     font-family: Verdana;
+    background-color: springgreen;
 }
 
 .top-div {
@@ -76,8 +76,6 @@ body {
 
   .title-div {
     text-align: center;
-    border: 3px double green;
-    border-radius: 20%;
   }
 
   .title-div h1 {
@@ -87,6 +85,7 @@ body {
     text-align: center;
     justify-content: center;
     font-family: Papyrus;
+    padding: 20px;
   }
 
   .bottom-div {
@@ -102,6 +101,50 @@ body {
     width: 20%;
     border-radius: 20px;
     align-self: center;
+  }
+
+  .seeds-layout {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px 100px;
+    align-items: center;
+  }
+
+  .seed-item {
+    border: 3px solid green;
+    border-radius: 10px;
+    padding: 50px;
+    max-width: 100%;
+    background-color: wheat;
+    overflow-y: scroll;
+  }
+
+  .seed-item h2 {
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  .seed-item img { 
+    max-width: 100rem;
+    max-height: 100rem;
+
+  }
+
+  .seed-item p { 
+    font-size: 2em;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .description {
+    font-size: 2.5em;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .planting {
+    font-size: 2.5em;
+    font-family: 'Times New Roman', Times, serif;
   }
 
   /* Tooltip container */
