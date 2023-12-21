@@ -79,10 +79,11 @@ body {
   }
 
   .header-div h1 {
-    font-size: 3em;
+    font-size: 5em;
     font-weight: bold;
     margin: 2px;
     text-align: center;
+    justify-content: center;
   }
 
   .header-div h2 {
