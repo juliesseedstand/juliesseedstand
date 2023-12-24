@@ -117,6 +117,11 @@ body {
     max-height: 80rem;
   }
 
+  .seed-image {
+    display: block;
+    margin: 0 auto;
+  }
+
   .seed-item h2 {
     font-weight: bold;
     font-size: 3em;
@@ -146,6 +151,63 @@ body {
     font-size: 3.5em;
     font-family: 'Times New Roman', Times, serif;
   }
+
+  .add-cart-button {
+    width: 400px;
+    height: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 50px;
+  }
+
+  .shopping-cart-div {
+    min-width: 100%;
+    position:absolute;
+  }
+
+  .shopping-cart {
+    display: block;
+    margin-left: auto;
+  }
+
+  .quantity-div {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .quantity {
+    width: 400px;
+    height: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .badge:after{
+    content:attr(value);
+    text-align: center;
+    font-size:36px;
+    color: #fff;
+    background: red;
+    border-radius:50%;
+    padding: 0 5px;
+    position:relative;
+    left:-8px;
+    top:-20px;
+    opacity:0.9;
+    display: block;
+    margin-left: auto;
+}
 
   /* Tooltip container */
 .tooltip {

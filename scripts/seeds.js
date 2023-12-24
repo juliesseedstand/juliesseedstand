@@ -7,6 +7,7 @@ var seeds = {
             imagePath: "Resources/cosmos-flower.jpg",
             price: "$2.95",
             availability: "Available",
+            productTag: "cosmos",
         },
         {
             productName: "Zinia",
@@ -15,6 +16,7 @@ var seeds = {
             imagePath: "Resources/zinia-flowers.jpeg",
             price: "2.95",
             availability: "Available",
+            productTag: "zinia",
         },
         {
             productName: "Marygolds",
@@ -22,6 +24,7 @@ var seeds = {
             imagePath: "Resources/marigold.jpg",
             price: "",
             availability: "",
+            productTag: "marigolds",
         },
         {
             productName: "Sunflowers",
@@ -29,6 +32,7 @@ var seeds = {
             imagePath: "Resources/sunflowers.jpg",
             price: "",
             availability: "",
+            productTag: "sunflowers",
         },
         {
             productName: "Sweetpea",
@@ -36,6 +40,7 @@ var seeds = {
             imagePath: "Resources/sweet pea.jpg",
             price: "",
             availability: "",
+            productTag: "sweatpea",
         },
         {
             productName: "Strawflower",
@@ -43,6 +48,7 @@ var seeds = {
             imagePath: "Resources/strawflower.jpg",
             price: "",
             availability: "",
+            productTag: "strawflower",
         },
 
     ]
