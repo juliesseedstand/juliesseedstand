@@ -1,6 +1,11 @@
 *
   base styles for the content in the html
 */
+:root {
+  --background-color: #00ff7f;
+  --foreground-color: #000000;
+}
+
 
 html {
     color: #222;
@@ -13,9 +18,9 @@ html {
 */    
 body {
     display: block;
-    color: black;
+    color: var(--foreground-color, black);
     font-family: Verdana;
-    background-color: springgreen;
+    background-color: var(--background-color, purple);
 }
 
 .top-div {
@@ -107,12 +112,13 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 50px 50px;
+    padding: 40px 40px 40px 40px;
   }
 
   .seed-item {
     border: 3px solid green;
     border-radius: 10px;
-    background-color: wheat;
+    background-color: teal;
     overflow-y: scroll;
     max-height: 80rem;
   }
@@ -124,7 +130,7 @@ body {
 
   .seed-item h2 {
     font-weight: bold;
-    font-size: 3em;
+    font-size: 2em;
     text-align: center;
     padding: 20px;
   }
@@ -136,19 +142,19 @@ body {
   }
 
   .seed-item p { 
-    font-size: 4em;
+    font-size: 2em;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
   }
 
   .description {
-    font-size: 3.5em;
+    font-size: 1.5em;
     font-family: 'Times New Roman', Times, serif;
     padding: 20px;
   }
 
   .planting {
-    font-size: 3.5em;
+    font-size: 1.5em;
     font-family: 'Times New Roman', Times, serif;
   }
 
@@ -193,6 +199,27 @@ body {
     cursor: pointer;
   }
 
+  .shopping-cart {
+    width: 750px;
+    height: 423px;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+   
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-item {
+    padding: 20px 30px;
+    height: 120px;
+    display: flex;
+  }
+
+   /*
+   badge displayed on the cart with quantity of items 
+   */
   .badge:after{
     content:attr(value);
     text-align: center;
@@ -207,6 +234,64 @@ body {
     opacity:0.9;
     display: block;
     margin-left: auto;
+}
+
+/* Shopping cart styling */
+.cart-buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  /* background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;*/
+  background: url('../Resources/like-button.png');
+}
+ 
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('../Resources/like-button.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.item-button {
+  margin-left: 20px;
+}
+
+.item-image {
+  margin-right: 50px;
+  width: 100px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.item-description {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.item-quantity {
+  font-size: 4rem;
+  font-weight: bold;
+  background: white; 
+  margin: 20px 0px 20px 0px
+}
+
+.item-quantity-button {
+  background: white;
+  border-radius: 20%;
 }
 
   /* Tooltip container */
@@ -239,3 +324,94 @@ body {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+nav {
+  /*padding: 20px 0 40px 0;*/
+  background: #F8F8F8;
+  font-size: 16px;
+  min-height: 5rem;
+  border-radius: 5%;
+  
+  .navbar-left {
+    float: left;
+    font-size: 2rem;
+  }
+  
+  .navbar-right {
+    float: right;
+  }
+  ul {
+    
+    li {
+      display: inline;
+      padding-left: 20px;
+      a {
+        color: #777777;
+        text-decoration: none;
+        
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: 80%;
+}
+
+about-div {
+  width: 100%;
+  min-height: 16rem;
+  background-color: var(--background-color, purple);
+}
+
+about-div h1 {
+  text-align: center;
+  font-size: 3rem;
+  background-color: var(--background-color, purple);
+}
+
+about-div p {
+  text-align: center;
+  font-size: 2rem;
+  background-color: var(--background-color, purple);
+}
+
+article.tabs
+{
+position: relative;
+display: block;
+width: 100%;
+height: 100%;
+margin: 2em auto;
+background-color: var(--background-color, purple);
+}
+
+article.tabs section
+{
+position: absolute;
+display: block;
+top: 1.8em;
+left: 0;
+height: 12em;
+padding: 10px 20px;
+z-index: 0;
+}
+
+article.tabs section:first-child
+{
+z-index: 1;
+}
+
+.about-section {
+  height: 100%;
+  width: 100%;
+  font-size: 3rem;
+  margin: 20px;
+  padding: 4rem;
+  text-align: center;
+}
+

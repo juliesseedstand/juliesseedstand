@@ -7,145 +7,67 @@
         <link href="css/tabs.css" rel="stylesheet" type="text/css">
         <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
+        <script src="src/scripts.js" type="text/javascript"></script>
+        <script src="src/cart.js" type="text/javascript" defer></script>
         <script type="text/javascript" src="scripts/seeds.js"></script>
         <script type="text/javascript">
-
-            var cartItems = [];
-
-
             /*
             Load function reads the thumbnails from a list and puts them on a selector screen.
             */
             function load() {
-                /*
-                setTimeout(function() {
-                    document.getElementById("top-div").style.visibility = 'hidden';
-                    document.getElementById("top-div").remove();
-                }, 10000);
-                */
+                document.getElementById('about').style.display = 'none';
                 populateDiv("seeds-layout",seeds['products'],"seed-item");
             }
-
-            function populateDiv(divName, array, divClass) {
-                var div = document.getElementById(divName);
-                array.forEach(element => {
-
-                    var divElement = document.createElement('div');
-                    divElement.className = divClass;
-                    divElement.id = element.productName + "-div";
-
-                    var h2Element = document.createElement('h2');
-                    h2Element.textContent = element.productName;
-                    divElement.appendChild(h2Element);
-
-                    var imgElement = document.createElement('img'); 
-                    imgElement.src = element.imagePath;
-                    imgElement.className = "seed-image";
-                    divElement.appendChild(imgElement);
-
-                    var descriptionHeader = document.createElement('h2');
-                    descriptionHeader.textContent = "Description";
-                    divElement.appendChild(descriptionHeader);
-
-                    var descriptionElement = document.createElement('p');
-                    descriptionElement.className = "description";
-                    descriptionElement.innerHTML = element.description;
-                    divElement.appendChild(descriptionElement);
-
-                    var plantingHeader = document.createElement('h2');
-                    plantingHeader.textContent = "Planting";
-                    divElement.appendChild(plantingHeader);
-
-                    var descriptionElement = document.createElement('p');
-                    descriptionElement.className = "planting";
-                    descriptionElement.innerHTML = element.planting;
-                    divElement.appendChild(descriptionElement);
-
-                    var descriptionElement = document.createElement('p');
-                    descriptionElement.className = "planting";
-                    descriptionElement.innerHTML = element.planting;
-                    divElement.appendChild(descriptionElement);
-
-                    var priceElement = document.createElement('p');
-                    priceElement.textContent = "Price: " + element.price;
-                    divElement.appendChild(priceElement);
-
-                    var quanityDiv = document.createElement('div');
-                    quanityDiv.className = "quantity-div";
-                    var labelSelection = document.createElement('label');
-                    labelSelection.textContent = "Select Quantity: ";
-                    labelSelection.className = "planting";
-                    quanityDiv.appendChild(labelSelection);
-
-                    var quantitySelection = document.createElement('select');
-                    quantitySelection.className = "quantity"
-                    quantitySelection.id = `${element.productTag}-quantity`;
-                    for(var i=0;i<10;i++) {
-                        var opt = document.createElement("option");
-                        opt.value = i;
-                        opt.text = `${i} packages`;
-                        quantitySelection.add(opt, false);
-                    }
-                    // quantitySelection.addEventListener()
-                    quanityDiv.appendChild(quantitySelection);
-                    divElement.appendChild(quanityDiv);
-
-                    var inputElement = document.createElement('button');
-                    inputElement.type = "button"
-                    inputElement.className = "add-cart-button";
-                    inputElement.id = element.productTag + "-button"
-                    inputElement.textContent = "Add To Cart";
-                    inputElement.addEventListener("click", function() {
-                            onAddItemToCart(element.productTag);
-                    }, false);
-                    divElement.appendChild(inputElement);
-                    div.appendChild(divElement);
-                });
-            }
-  
-            function onAddItemToCart(productTag) {
-                var cart = document.getElementById("shopping-cart");
-                var value = Number(cart.getAttribute("value"));
-                console.log("product Tag: " + productTag);
-                var quantity = document.getElementById(`${productTag}-quantity`);
-                console.log(`Quantity: ${quantity.value} Cart: ${cart}`);
-                cart.setAttribute("value", String(value + Number(quantity.value)));
-                console.log(`Value: ${value}`);
-
-                let cartItem = {
-                    product: productTag,
-                    quantity: quantity.value,
-                }
-                cartItems.push(cartItem);
-
-                cartItems.forEach((cartItem) => {
-                    console.log(`${cartItem.product}, ${cartItem.quantity}`);
-                });
-            }
-
         </script>
 
         <div id="top-div" class="top-div">
             <img id="banner-image" src="Resources/juliesseedstand.jpg" alt="Julie's Seed Stand" class="banner">
             <br />
-            <br />
-            
+            <br />        
         </div>
     </head>
-<body onload="load()" >
-    
+<body onload="load()" >   
     <br />
     <br />
+    <nav>
+        <div class="container">
+          <ul class="navbar-left">
+            <li><a href="#"onclick="(function(){
+                document.getElementById('about').style.display = 'none';
+                document.getElementById('seeds-layout').style.display = 'grid';
+                return false;
+            })();return false;">Home</a></li>
+            <li><a href="#about" onclick="(function(){
+                document.getElementById('seeds-layout').style.display = 'none';
+                document.getElementById('about').style.display = 'block';
+                return false;
+            })();return false;">About</a></li>
+          </ul> <!--end navbar-left -->
+      
+          <ul class="navbar-right">
+            <li>
+                <i id="shopping-cart" class="fa badge fa-2x" 
+                    onclick="expandCart()" value=0>
+                    &#xf07a;</i></li>
+          </ul> <!--end navbar-right -->
+        </div> <!--end container -->
+      </nav>
     <div id="header-div" class="header-div">
-        <div id="shopping-cart-div"  class="shopping-cart-div">
-            <!--<img id="shopping-cart" src="Resources/shopping-cart.png" class="shopping-cart">-->
-            <i id="shopping-cart" class="fa badge fa-4x" value=0>&#xf07a;</i>
-        </div>
         <div id="title-div" class="title-div">
             <h1 class="title">Julie's Seed Stand</h1>
         </div>
     </div>
-    <div id="seeds-layout" class="seeds-layout">
-    </div>
+    
+    <section id="home">
+        <div id="seeds-layout" class="seeds-layout">
+        </div>
+    </section>
+    <section id="about" class="about-section">
+        <div id="about-div" class="about-div">
+            <h1>About Julie and Her Seed Stand</h1>
+            <!--<p>Julie started her seed stand business while in elementarty school after collecting seeds from her family garden. Her entrepreneurial spirit shown as she immediately opened the stand in front of her family home. Traffic was light and she thought she could reach a broader crowd by creating an online presence.</p>-->
+            <p>Julie started her stand with the help of Paulie and the website designer rob. After many years julie started to sell her seeds and knowledge to others. Paulie helped julie by harvesting the seeds and always being supporting. Rob helped make this website by using his computer skills to make the website. We all appreciate when others support this business.</p>
+        </div>
+    </section>
 </body>
 </html>
