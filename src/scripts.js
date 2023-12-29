@@ -36,11 +36,6 @@ function populateDiv(divName, array, divClass) {
         descriptionElement.innerHTML = element.planting;
         divElement.appendChild(descriptionElement);
 
-        var descriptionElement = document.createElement('p');
-        descriptionElement.className = "planting";
-        descriptionElement.innerHTML = element.planting;
-        divElement.appendChild(descriptionElement);
-
         var priceElement = document.createElement('p');
         priceElement.textContent = "Price: " + element.price;
         divElement.appendChild(priceElement);
