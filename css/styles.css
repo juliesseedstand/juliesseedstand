@@ -463,6 +463,8 @@ z-index: 1;
 
 #shopping-cart-button {
   display: table-cell;
+  border: 2px solid gold;
+  background-color: rgb(234, 21, 120);
   align-self: center;
   text-align: center;
   vertical-align: bottom;
@@ -472,7 +474,7 @@ z-index: 1;
   border-radius: 20px;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin: 100px auto 20px -10px;
+  margin: 100px 8px 20px 8px;
 }
 
 

@@ -33,9 +33,10 @@ function expandCart() {
     cartDiv = document.getElementById("shopping-cart-button");
     console.log("Go to the Order Page");
   });
-  
-  cartDiv.appendChild(closeButton);
-  cartDiv.appendChild(orderButton);
+  cartButtonsSpan = document.createElement('span');
+  cartButtonsSpan.appendChild(closeButton);
+  cartButtonsSpan.appendChild(orderButton);
+  cartDiv.appendChild(cartButtonsSpan);
 }
 
 function createCartItem(cartItem, counter) {
