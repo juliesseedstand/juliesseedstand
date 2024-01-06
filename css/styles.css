@@ -21,6 +21,7 @@ body {
     color: var(--foreground-color, black);
     font-family: Verdana;
     background-color: var(--background-color, purple);
+    z-index: 1;
 }
 
 .top-div {
@@ -61,6 +62,7 @@ body {
     width: 100%;
     display: grid;
     justify-content: center;
+    z-index: -1;
   }
 
   .header-div h1 {
@@ -108,11 +110,16 @@ body {
     align-self: center;
   }
 
+  #seeds-outer {
+    z-index: 1;
+  }
+
   .seeds-layout {
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 50px 50px;
     padding: 40px 40px 40px 40px;
+    z-index: 2;
   }
 
   .seed-item {
@@ -159,11 +166,10 @@ body {
   }
 
   .add-cart-button {
-    width: 400px;
-    height: 80px;
-    font-size: 40px;
-    font-weight: bold;
-    padding: 10px;
+    
+    font-size: 2rem;
+    font-weight: normal;
+    padding: 1rem 2rem 1rem 2rem;
     border-radius: 20px;
     margin-bottom: 50px;
     transition-duration: 0.4s;
@@ -172,43 +178,19 @@ body {
     margin: 0 auto 50px;
   }
 
-  .shopping-cart-div {
-    min-width: 100%;
-    position:absolute;
-  }
-
-  .shopping-cart {
-    display: block;
-    margin-left: auto;
-  }
-
   .quantity-div {
     display: block;
     margin: 0 auto;
   }
 
   .quantity {
-    width: 400px;
-    height: 80px;
-    font-size: 40px;
-    font-weight: bold;
-    padding: 10px;
+    font-size: 2rem;
+    font-weight: normal;
+    padding: 1rem 2rem 1rem 2rem;
     border-radius: 20px;
     margin-bottom: 50px;
     transition-duration: 0.4s;
     cursor: pointer;
-  }
-
-  .shopping-cart {
-    width: 750px;
-    height: 423px;
-    margin: 80px auto;
-    background: #FFFFFF;
-    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
-    border-radius: 6px;
-   
-    display: flex;
-    flex-direction: column;
   }
 
   .cart-item {
@@ -237,10 +219,11 @@ body {
 }
 
 /* Shopping cart styling */
-.cart-buttons {
+.cart-buttons-span {
   position: relative;
   padding-top: 30px;
-  margin-right: 60px;
+  margin-right: 10px;
+  align-items: ;
 }
 
 .delete-btn,
@@ -266,32 +249,51 @@ body {
   background-repeat: no-repeat;
 }
 
+.fa-heart {
+  color: red;
+  margin-left:10px;
+}
+
+.fa-trash {
+  color: teal;
+}
+
 .item-button {
   margin-left: 20px;
 }
 
 .item-image {
-  margin-right: 50px;
+  margin-right: 10px;
   width: 100px;
   height: 50px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .item-description {
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-right: 10px;
 }
 
 .item-quantity {
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: normal;
   background: white; 
   margin: 20px 0px 20px 0px
 }
 
 .item-quantity-button {
   background: white;
-  border-radius: 20%;
+  border-radius: 5px;
+  font-size: 3rem;
+}
+
+#quantity-span:first-child {
+  margin-left: 30px;
+}
+
+#quantity-span::last-child {
+  margin-right: 30px;
 }
 
   /* Tooltip container */
@@ -330,7 +332,7 @@ nav {
   background: #F8F8F8;
   font-size: 16px;
   min-height: 5rem;
-  border-radius: 5%;
+  border-radius: 10px;
   
   .navbar-left {
     float: left;
@@ -414,4 +416,63 @@ z-index: 1;
   padding: 4rem;
   text-align: center;
 }
+
+/*
+  Shopping cart.
+*/
+.shopping-cart {
+  margin: 20px 0;
+  float: right;
+  background: white;
+  width: 50%;
+  height: 0px;
+  position: relative;
+  border-radius: 10px;
+  padding: 20px;
+  visibility: hidden;
+  display: table;
+  z-index: 100;
+  
+  .shopping-cart-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+    
+    .shopping-cart-total {
+      float: right;
+    }
+  }
+}
+
+.shopping-cart li::marker {
+  content: none;
+}
+
+.shopping-cart:after {
+	bottom: 100%;
+	left: 89%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: white;
+	border-width: 8px;
+	margin-left: -8px;
+}
+
+#shopping-cart-button {
+  display: table-cell;
+  align-self: center;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 2rem;
+  font-weight: normal;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin: 100px auto 20px -10px;
+}
+
 

@@ -23,7 +23,7 @@ var seeds = {
             description: "Marigolds are yellowish orangish flowers that grow close to the ground.",
             imagePath: "Resources/marigold.jpg",
             planting: "Loosen soil and poke about a fingers length and put 4-5 seeds in each hole.",
-            price: "4.50",
+            price: "$4.50",
             availability: "",
             productTag: "marigolds",
         },

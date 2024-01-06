@@ -1,61 +1,95 @@
+        
 function expandCart() {
-    var cartDiv = document.createElement('div');
-    cartDiv.className = "shopping-cart";
-    cartDiv.id = 'shopping-cart';
-    cartList = document.createElement('li');
-    cartDiv.app
+  
+    var counter = 0;
+  $("#cart").on("click", function () {
+    $(".shopping-cart").fadeToggle("fast");
+  });
 
-    console.log("Cart onClick");
-    cartItems.forEach((cartItem) => {
-        console.log(`Cart Item: ${cartItem.product}, ${cartItem.quantity}`);
-        createCartItem(cartItem);
-    });
+  document.getElementById("shopping-cart").innerHTML = '';
+
+
+  cartItemList = document.createElement("ul");
+  Object.keys(cartItems).forEach((productId) => {
+    console.log(
+      `Cart Item: ${cartItems[productId].product}, ${cartItems[productId].quantity}`
+    );
+    cartItemList.appendChild(createCartItem(cartItems[productId], counter++));
+  });
+  cartDiv.appendChild(cartItemList);
+  closeButton = document.createElement("button");
+  closeButton.id= "shopping-cart-button";
+  closeButton.innerHTML = "Close Cart";
+  closeButton.addEventListener("click", function () {
+    cartDiv = document.getElementById("shopping-cart");
+    cartDiv.style.visibility = "hidden";
+    cartDiv.style.height = "0px";
+  });
+
+  orderButton = document.createElement("button");
+  orderButton.id= "shopping-cart-button";
+  orderButton.innerHTML = "Checkout";
+  orderButton.addEventListener("click", function () {
+    cartDiv = document.getElementById("shopping-cart-button");
+    console.log("Go to the Order Page");
+  });
+  
+  cartDiv.appendChild(closeButton);
+  cartDiv.appendChild(orderButton);
 }
 
-function createCartItem  (cartItem) {
-    productItem = seeds.products.find(obj => obj.productTag === cartItem.product);
-    console.log(productItem);
+function createCartItem(cartItem, counter) {
+  productItem = seeds.products.find(
+    (obj) => obj.productTag === cartItem.product
+  );
+  console.log(productItem);
 
-    cartDiv = document.getElementById("shopping-cart");
-    cartItemList = document.createElement('li');
-    cartItemSpan = document.createElement('span');
-    buttonsSpan = document.createElement('span');
-    buttonsSpan.className = "cart-buttons"
-    buttonDeleteSpan = document.createElement('icon')
-    buttonDeleteSpan.className = 'fa-solid fa-trash fa-xs item-button';
-    buttonsSpan.appendChild(buttonDeleteSpan);
-    buttonLike = document.createElement('icon')
-    buttonLike.className = "fa-solid fa-heart fa-xs item-button";
-    buttonsSpan.appendChild(buttonLike);
-    cartItemSpan.appendChild(buttonsSpan);
-    imageElement = document.createElement('img');
-    imageElement.className = 'item-image';
-    imageElement.src = productItem.imagePath;
-    cartItemSpan.appendChild(imageElement);
-    description = document.createElement('span');
-    description.className = 'item-description'
-    console.log(`Product Name ${productItem.productName}  ${cartItem.quantity}`);
-    description.innerHTML = productItem.productName;
-    cartItemSpan.appendChild(description);
+  cartDiv = document.getElementById("shopping-cart");
+  cartDiv.style.visibility = "visible";
+  cartDiv.style.height = "400px";
+  cartItemListItem = document.createElement("li");
+  cartItemSpan = document.createElement("span");
+  buttonsSpan = document.createElement("span");
+  buttonsSpan.className = "cart-buttons-span";
+  buttonDeleteSpan = document.createElement("icon");
+  buttonDeleteSpan.innerHTML = '<i class="fa fa-trash fa-lg"><i>';
+  buttonsSpan.appendChild(buttonDeleteSpan);
+  buttonLike = document.createElement("icon");
+  buttonLike.innerHTML = '<i class="fa fa-heart fa-lg"><i>';
+  buttonsSpan.appendChild(buttonLike);
+  cartItemSpan.appendChild(buttonsSpan);
+  imageElement = document.createElement("img");
+  imageElement.className = "item-image";
+  imageElement.src = productItem.imagePath;
+  cartItemSpan.appendChild(imageElement);
+  description = document.createElement("span");
+  description.className = "item-description";
+  console.log(`Product Name ${productItem.productName}  ${cartItem.quantity}`);
+  description.innerHTML = productItem.productName;
+  cartItemSpan.appendChild(description);
 
-    quantitySpan = document.createElement('span');
-    buttonPlus =  document.createElement('icon');
-    buttonPlus.className = "fa-solid fa-plus fa-xs item-quantity-button";
-    quantityValueSpan =  document.createElement('span');
-    quantityValueSpan.className = 'item-quantity';
-    quantityValueSpan.innerHTML = cartItem.quantity;
-    buttonMinus =  document.createElement('icon');
-    buttonMinus.className = "fa-solid fa-minus fa-xs item-quantity-button";
-    quantityValueSpan.className = "item-quantity";
+  quantitySpan = document.createElement("span");
+  buttonPlus = document.createElement("button");
+  buttonPlus.className = "item-quantity-button";
+  buttonPlus.innerHTML = "+";
+  buttonPlus.addEventListener('click', function (event) {
 
-    quantitySpan.appendChild(buttonPlus);
-    quantitySpan.appendChild(quantityValueSpan);
-    quantitySpan.appendChild(buttonMinus);
-    cartItemSpan.appendChild(quantitySpan);
+  })
+  quantitySpan.appendChild(buttonPlus);
+  quantityValueSpan = document.createElement("span");
+  quantityValueSpan.className = "item-quantity";
+  quantityValueSpan.innerHTML = cartItem.quantity;
+  quantityValueSpan.id = `itemQuantity-${counter}`;
+  quantitySpan.appendChild(quantityValueSpan);
+  buttonMinus = document.createElement("button");
+  buttonMinus.className = "item-quantity-button";
+  buttonMinus.innerHTML = "-";
+  quantityValueSpan.className = "item-quantity";
+  quantitySpan.appendChild(buttonMinus);
 
-    cartItemList.appendChild(cartItemSpan);
-    cartDiv.appendChild(cartItemList);
+  cartItemSpan.appendChild(quantitySpan);
 
-    
-
+  cartItemListItem.appendChild(cartItemSpan);
+  return cartItemListItem;
+  //cartDiv.appendChild(cartItemListItem);
 }
