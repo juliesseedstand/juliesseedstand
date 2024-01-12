@@ -22,18 +22,30 @@ body {
     font-family: Verdana;
     background-color: var(--background-color, purple);
     z-index: 1;
+    max-width:1000px;
+    margin:0 auto;
+}
+
+.seeds-app-container {
+  width: 90px;
+  max-width: 90px;
+  margin: auto;
+  text-align: center;
 }
 
 .top-div {
   display: contents;
   inset: 10%;
+  align-items: center;
 }
 
 .banner {
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
     height: 50%;
     border-radius: 10px;
-    align-content: left;
   }
 
   .image-div {
@@ -65,34 +77,22 @@ body {
     z-index: -1;
   }
 
-  .header-div h1 {
-    font-size: 5em;
-    font-weight: bold;
-    margin: 2px;
-    text-align: center;
-    justify-content: center;
-    font-family: Papyrus;
-  }
-
-  .header-div h2 {
-    font-size: 2em;
-    font-weight: bolder;
-    margin: 2px;
-    text-align: center;
-  }
 
   .title-div {
     text-align: center;
-  }
-
-  .title-div h1 {
-    font-size: 5em;
-    font-weight: bold;
-    margin: 2px;
+    min-width: 100%;
     text-align: center;
     justify-content: center;
     font-family: Papyrus;
-    padding: 20px;
+    margin: auto;
+  }
+
+  .title-div h1 {
+
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 5px;
   }
 
   .bottom-div {
@@ -110,8 +110,14 @@ body {
     align-self: center;
   }
 
+  #outer-container {
+    z-index: 1;
+    position: relative;
+  }
+
   #seeds-outer {
     z-index: 1;
+    position: relative;
   }
 
   .seeds-layout {
@@ -124,10 +130,16 @@ body {
 
   .seed-item {
     border: 3px solid green;
+    box-shadow: 0 4px 8px 0 rgb(245, 243, 243);
+    transition: 0.3s;
     border-radius: 10px;
     background-color: teal;
     overflow-y: scroll;
     max-height: 80rem;
+  }
+
+  .seed-item:hover {
+    box-shadow: 0 8px 16px 0 rgb(245, 243, 243);
   }
 
   .seed-image {
@@ -223,7 +235,7 @@ body {
   position: relative;
   padding-top: 30px;
   margin-right: 10px;
-  align-items: ;
+  align-items: center;
 }
 
 .delete-btn,
@@ -331,55 +343,65 @@ nav {
   /*padding: 20px 0 40px 0;*/
   background: #F8F8F8;
   font-size: 16px;
-  min-height: 5rem;
+  min-height: 4rem;
   border-radius: 10px;
   
-  .navbar-left {
-    float: left;
-    font-size: 2rem;
-  }
-  
-  .navbar-right {
-    float: right;
-  }
-  ul {
+  /* .navbar-left {
     
+  } */
+
+  ul {
+    float: left;
+    font-size: 1.2rem;
+    font-weight: bolder;
     li {
       display: inline;
       padding-left: 20px;
+
       a {
         color: #777777;
         text-decoration: none;
-        
+
         &:hover {
-          color: black;
+          color: #000000;
         }
       }
     }
   }
+
+  span {
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+  }
+}
+
+.active {
+  color: #000000;
 }
 
 .container {
-  margin: auto;
   width: 80%;
+  margin: 10px;
 }
 
-about-div {
-  width: 100%;
-  min-height: 16rem;
+.about-section {
+  display: inline-flex;
+  position: relative;
   background-color: var(--background-color, purple);
+  align-items: center;
 }
 
-about-div h1 {
+.about-section h1 {
   text-align: center;
-  font-size: 3rem;
-  background-color: var(--background-color, purple);
+  font-size: 2em;
 }
 
-about-div p {
+.about-section p {
   text-align: center;
-  font-size: 2rem;
-  background-color: var(--background-color, purple);
+  font-size: 1.5em;
+  padding-left: 30px;
 }
 
 article.tabs
@@ -408,15 +430,6 @@ article.tabs section:first-child
 z-index: 1;
 }
 
-.about-section {
-  height: 100%;
-  width: 100%;
-  font-size: 3rem;
-  margin: 20px;
-  padding: 4rem;
-  text-align: center;
-}
-
 /*
   Shopping cart.
 */
@@ -426,7 +439,7 @@ z-index: 1;
   background: white;
   width: 50%;
   height: 0px;
-  position: relative;
+  position: abosolute;
   border-radius: 10px;
   padding: 20px;
   visibility: hidden;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=800px, initial-scale=1">
     <head>
         <title>Julie's Seed Stand</title>
         <link href="css/styles.css" rel="stylesheet" type="text/css">
@@ -26,60 +27,60 @@
             <br />
             <br />        
         </div>
-    </head>
-<body onload="load()" >   
-    <br />
-    <br />
-    <nav>
-        <div class="container">
-          <ul class="navbar-left">
-            <li><a href="#"onclick="(function(){
-                document.getElementById('about').style.display = 'none';
-                document.getElementById('seeds-layout').style.display = 'grid';
-                return false;
-            })();return false;">Home</a></li>
-            <li><a href="#about" onclick="(function(){
-                document.getElementById('seeds-layout').style.display = 'none';
-                document.getElementById('about').style.display = 'block';
-                cartDiv = document.getElementById('shopping-cart');
-                cartDiv.style.visibility = 'hidden';
-                cartDiv.style.height = '0px';
-                return false;
-            })();return false;">About</a></li>
-          </ul> <!--end navbar-left -->
-      
-          <ul class="navbar-right">
-            <li>
-                <i id="shopping-cart-icon" class="fa badge fa-2x" 
-                    onclick="expandCart()" value=0>
-                    &#xf07a;</i></li>
-          </ul> <!--end navbar-right -->
-        </div> <!--end container -->
-      </nav>
-      <div id="shopping-cart-window" class="window card z-depth-3">
-        <div id="shopping-cart" class="shopping-cart">
-
-        </div>
-    </div>
-    <div id="seeds-outer"></div>
-        <div id="header-div" class="header-div">
-            <div id="title-div" class="title-div">
-                <h1 class="title">Julie's Seed Stand</h1>
-            </div>
-        </div>
+        <nav>
+            <ul class="navbar-left">
+              <li><a id="seeds-home-link" class="active" href="#"onclick="(function(){
+                  document.getElementById('seeds-home-link').classList.add('active');
+                  document.getElementById('about-link').classList.remove('active');
+                  document.getElementById('about').style.display = 'none';
+                  document.getElementById('seeds-layout').style.display = 'grid';
+                  return false;
+                  })();return false;" >Home</a>
+              </li>
+              <li><a id="about-link" href="#about" onclick="(function(){
+                  document.getElementById('seeds-home-link').classList.remove('active');
+                  document.getElementById('about-link').classList.add('active');
+                  document.getElementById('seeds-layout').style.display = 'none';
+                  document.getElementById('about').style.display = 'block';
+                  cartDiv = document.getElementById('shopping-cart');
+                  cartDiv.style.visibility = 'hidden';
+                  cartDiv.style.height = '0px';
+                  return false;
+                  })();return false;">About</a>
+              </li>
+            </ul> <!--end navbar-left -->
         
-        <section id="home">
-            <div id="seeds-layout" class="seeds-layout">
-            </div>
-        </section>
-        <section id="about" class="about-section">
-            <div id="about-div" class="about-div">
+            <span>
+                  <i id="shopping-cart-icon" class="fa badge fa-2x" 
+                      onclick="expandCart()" value=0>
+                      &#xf07a;</i>
+            </span> <!--end navbar-right -->
+        </nav>
+  
+
+        <div id="title-div" class="title-div">
+            <h1 class="title">Julie's Seed Stand</h1>
+        </div>
+
+    </head>
+<body onload="load()" >
+    <container id="seeds-app-container" class="seeds-app-container">
+    
+    <!-- <container id="outer-container">
+        <div id="shopping-cart" class="shopping-cart">
+        </div> -->
+        <div id="seeds-outer"></div>
+            <section id="home">
+                <div id="seeds-layout" class="seeds-layout">
+                </div>
+            </section>
+            <section id="about" class="about-section">
                 <h1>About Julie and Her Seed Stand</h1>
                 <!--<p>Julie started her seed stand business while in elementarty school after collecting seeds from her family garden. Her entrepreneurial spirit shown as she immediately opened the stand in front of her family home. Traffic was light and she thought she could reach a broader crowd by creating an online presence.</p>-->
                 <p>Julie started her stand with the help of Pauline and the website designer rob. After many years julie started to sell her seeds and knowledge to others. Pauline helped Julie by harvesting the seeds and always being supporting. Rob helped make this website by using his computer skills to make the website. We all appreciate when others support this business.</p>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
+    </container>   
     
 </body>
 </html>

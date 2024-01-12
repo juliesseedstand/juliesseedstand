@@ -7,8 +7,6 @@ function expandCart() {
   });
 
   document.getElementById("shopping-cart").innerHTML = '';
-
-
   cartItemList = document.createElement("ul");
   Object.keys(cartItems).forEach((productId) => {
     console.log(
