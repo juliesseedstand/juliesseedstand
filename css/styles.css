@@ -233,8 +233,11 @@ body {
 /* Shopping cart styling */
 .cart-buttons-span {
   position: relative;
+  top: 0; 
+  left: 0; 
+  display: inline-block;
   padding-top: 30px;
-  margin-right: 10px;
+  margin-left: 0px;
   align-items: center;
 }
 
@@ -443,8 +446,7 @@ z-index: 1;
   min-height: 400px;
   border-radius: 10px;
   border: 3px solid #008080;
-  padding: 10px;
-  visibility: hidden;
+  /*visibility: hidden;*/
   z-index: 100;
   
   .shopping-cart-header {
