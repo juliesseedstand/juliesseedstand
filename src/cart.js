@@ -119,6 +119,7 @@ function createCartItem(cartItem, counter) {
 
 var getQuantitySpan = (productItem, cartItem, itemQuantitySpanId) => {
   quantitySpan = document.createElement("span");
+  quantitySpan.className = "quantity-span"
   buttonPlus = document.createElement("button");
   buttonPlus.id = `${productItem}-plus-button`;
   buttonPlus.className = "item-quantity-button";
