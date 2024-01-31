@@ -14,20 +14,35 @@ function expandCart() {
     cartItemList.appendChild(createCartItem(cartItems[productId], counter++));
   });
   cartDiv.appendChild(cartItemList);
-  document
-    .getElementById("close-shopping-cart-btn")
-    .addEventListener("click", function () {
-      cartDiv = document.getElementById("shopping-cart");
-      cartDiv.style.visibility = "hidden";
-      cartDiv.style.height = "0px";
-    });
+
 
   document
     .getElementById("checkout-btn")
     .addEventListener("click", function () {
       cartDiv = document.getElementById("shopping-cart-button");
       console.log("Go to the Order Page");
+      document.getElementById('seeds-home-link').classList.remove('active');
+      document.getElementById('about-link').classList.remove('active');
+      displayCheckoutPage(cartItems);
     });
+}
+
+function displayCheckoutPage(cartItems) {
+  document
+    .getElementById("shopping-cart").style.visibility = "hidden";
+  document.getElementById('seeds-layout').style.visibility = "hidden";
+  document.getElementById('checkout-div').style.visibility = "visible";
+  console.log('Order Page Should Be Visible');
+  var shoppingCartItems = document.getElementById('checkout-order-items');
+  cartItemList = document.createElement("ul");
+  var counter = 0;
+  Object.keys(cartItems).forEach((productId) => {
+    console.log(
+      `Cart Item: ${cartItems[productId].product}, ${cartItems[productId].quantity}`
+    );
+    cartItemList.appendChild(createCartItem(cartItems[productId], counter++));
+  });
+  shoppingCartItems.appendChild(cartItemList);
 }
 
 function incrementQuantityValue(spanId) {
@@ -96,6 +111,13 @@ function createCartItem(cartItem, counter) {
   description.innerHTML = productItem.productName;
   cartItemSpan.appendChild(description);
 
+  cartItemSpan.appendChild(getQuantitySpan(productItem, cartItem, itemQuantitySpanId));
+
+  cartItemListItem.appendChild(cartItemSpan);
+  return cartItemListItem;
+}
+
+var getQuantitySpan = (productItem, cartItem, itemQuantitySpanId) => {
   quantitySpan = document.createElement("span");
   buttonPlus = document.createElement("button");
   buttonPlus.id = `${productItem}-plus-button`;
@@ -119,9 +141,26 @@ function createCartItem(cartItem, counter) {
   });
   quantityValueSpan.className = "item-quantity";
   quantitySpan.appendChild(buttonMinus);
+  return quantitySpan;
 
-  cartItemSpan.appendChild(quantitySpan);
+}
 
-  cartItemListItem.appendChild(cartItemSpan);
-  return cartItemListItem;
+var closeShoppingCart = () => {
+  console.log('Close Shopping Cart!');
+  cartDiv = document.getElementById("shopping-cart");
+  cartDiv.style.visibility = "hidden";
+  cartDiv.style.height = "0px";
+}
+
+function checkoutBackButton() {
+  console.log('back button clicked');
+  document.getElementById('seeds-layout').style.visibility = 'visible';
+  document.getElementById('checkout-div').style.visibility = 'hidden'; 
+  
+
+}
+
+function sendOrder() {
+  console.log('Send Order button clicked');
+
 }

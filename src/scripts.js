@@ -1,5 +1,6 @@
 var cartItems = {};
 
+
 function populateDiv(divName, array, divClass) {
   var div = document.getElementById(divName);
   array.forEach((element) => {
@@ -45,15 +46,17 @@ function populateDiv(divName, array, divClass) {
     labelSelection.className = "planting";
     quanityDiv.appendChild(labelSelection);
 
-    var quantitySelection = document.createElement("select");
-    quantitySelection.className = "quantity";
-    quantitySelection.id = `${element.productTag}-quantity`;
-    for (var i = 0; i < 10; i++) {
-      var opt = document.createElement("option");
-      opt.value = i;
-      opt.text = `${i} packages`;
-      quantitySelection.add(opt, false);
-    }
+    quantitySelection = getQuantitySpan(element.productName,{quantity: 0},`itemQuantity-${element.productTag}`);
+    // var quantitySelection = document.createElement("select");
+    // quantitySelection.className = "quantity";
+    // quantitySelection.id = `${element.productTag}-quantity`;
+    // for (var i = 0; i < 10; i++) {
+    //   var opt = document.createElement("option");
+    //   opt.value = i;
+    //   opt.text = `${i} packages`;
+    //   quantitySelection.add(opt, false);
+    // }
+
     // quantitySelection.addEventListener()
     quanityDiv.appendChild(quantitySelection);
     divElement.appendChild(quanityDiv);
@@ -79,21 +82,21 @@ function onAddItemToCart(productTag) {
   var cart = document.getElementById("shopping-cart-icon");
   var value = Number(cart.getAttribute("value"));
   console.log("product Tag: " + productTag);
-  var productTagQuantity = document.getElementById(`${productTag}-quantity`);
-  cart.setAttribute("value", String(value + Number(productTagQuantity.value)));
+  var productTagQuantity = document.getElementById(`itemQuantity-${productTag}`);
   console.log(
-    `Value: ${value} Quantity.value ${Number(productTagQuantity.value)}`
+    `Value: ${value} Quantity.value ${Number(productTagQuantity.innerHTML)}`
   );
+  cart.setAttribute("value", String(value + Number(productTagQuantity.innerHTML)));
 
-  if (cartItems[productTag]) {
+  if (productTag in cartItems) {
     console.log(
       `cartItems[productTag].quantity: ${
         cartItems[productTag].quantity
-      }, Quantity.value ${Number(productTagQuantity.value)}`
+      }, Quantity.value ${Number(Number(productTagQuantity.innerHTML))}`
     );
     var quantity = Number(cartItems[productTag].quantity);
-    console.log(`Quantity.value: ${productTagQuantity.value} Cart: ${cart}`);
-    quantity = quantity + Number(productTagQuantity.value);
+    console.log(`Quantity.value: ${Number(productTagQuantity.innerHTML)} Cart: ${cart}`);
+    quantity = quantity + Number(productTagQuantity.innerHTML);
     console.log(`Quantity: ${quantity} Cart: ${cart}`);
     cartItems[productTag].quantity = quantity;
     console.log(
@@ -102,7 +105,7 @@ function onAddItemToCart(productTag) {
   } else {
     let cartItem = {
       product: productTag,
-      quantity: productTagQuantity.value,
+      quantity: Number(productTagQuantity.innerHTML),
     };
     cartItems[productTag] = cartItem;
   }

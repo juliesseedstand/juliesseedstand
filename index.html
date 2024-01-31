@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=800px, initial-scale=1">
+    <meta name="viewport" content="width=800, initial-scale=1.0">
     <head>
         <title>Julie's Seed Stand</title>
         <link href="css/styles.css" rel="stylesheet" type="text/css">
         <link href="css/tabs.css" rel="stylesheet" type="text/css">
-        <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script src="src/scripts.js" type="text/javascript"></script>
@@ -29,7 +29,7 @@
         </div>
         <nav>
             <ul class="navbar-left">
-              <li><a id="seeds-home-link" class="active" href="#"onclick="(function(){
+              <li><a id="seeds-home-link" class="active" href="#"onClick="(function(){
                   document.getElementById('seeds-home-link').classList.add('active');
                   document.getElementById('about-link').classList.remove('active');
                   document.getElementById('about').style.display = 'none';
@@ -37,7 +37,7 @@
                   return false;
                   })();return false;" >Home</a>
               </li>
-              <li><a id="about-link" href="#about" onclick="(function(){
+              <li><a id="about-link" href="#about" onClick="(function(){
                   document.getElementById('seeds-home-link').classList.remove('active');
                   document.getElementById('about-link').classList.add('active');
                   document.getElementById('seeds-layout').style.display = 'none';
@@ -64,18 +64,53 @@
 
     </head>
 <body onload="load()" >
+
     <container id="seeds-app-container" class="seeds-app-container">
+        <div id="checkout-div" class="checkout-screen">
+            <div onClick="checkoutBackButton()">
+                <i id="exit-checkout-icon" class="fa fa-solid fa-arrow-left fa-2x"></i>
+            </div>
+            
+            <h1>Place Order</h1>
+            <p>Use this form to place your order; email us and Julie will proptly respond.</p>
+            <form>
+                <fieldset style="margin:'20px'">
+                    <!-- First name -->
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName" value=""><br>
+                    <!-- Last name -->
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName" value=""><br>
+                    <!-- Email Address -->
+                    <label for="emailAddress">Email Address:</label><br>
+                    <input type="text" id="emailAddress" name="emailAddress" value=""><br>
+                    <!-- Phone Number -->
+                    <label for="phoneNumber">Phopne Number:</label><br>
+                    <input type="text" id="phoneNumber" name="phoneNumber" value=""><br>
+                    <label for="notes">Notes/Instructions:</label><br>
+                    <input type="textarea" name="notes" rows="5" cols="40"><br>
+                    <button id="send-order-btn" type="button" class="shopping-cart-button send-order-button" onClick="sendOrder()">Send Order</button>
+                </fieldset>
+            </form>
+            <div id="checkout-order-items" class="checkout-order-items">
+    
+            </div>
+        </div>
     
         <div id="shopping-cart" class="shopping-cart">
+            <div onClick="closeShoppingCart()" class="close-shopping-cart-div">
+                <i class="fa fa-solid fa-xmark fa-2x"></i>
+            </div>
             <h1 class="shopping-cart-header">Shopping Cart</h1>
+            
             <div id="shopping-cart-items">
 
             </div>
             <div class="shopping-cart-btn-span">
-                <button id="close-shopping-cart-btn" type="button" class="shopping-cart-button">Close Cart</button>
                 <button id="checkout-btn" type="button" class="shopping-cart-button">Check Out</button> 
             </div> 
         </div>
+
         <div id="seeds-outer"></div>
             <section id="home">
                 <div id="seeds-layout" class="seeds-layout">
