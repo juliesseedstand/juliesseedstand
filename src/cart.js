@@ -34,6 +34,7 @@ function displayCheckoutPage(cartItems) {
   document.getElementById('checkout-div').style.visibility = "visible";
   console.log('Order Page Should Be Visible');
   var shoppingCartItems = document.getElementById('checkout-order-items');
+  shoppingCartItems.innerHTML = "";
   cartItemList = document.createElement("ul");
   var counter = 0;
   Object.keys(cartItems).forEach((productId) => {
@@ -95,9 +96,9 @@ function createCartItem(cartItem, counter) {
   });
 
   buttonsSpan.appendChild(buttonDeleteSpan);
-  buttonLike = document.createElement("icon");
-  buttonLike.innerHTML = '<i class="fa fa-heart fa-lg"><i>';
-  buttonsSpan.appendChild(buttonLike);
+  // buttonLike = document.createElement("icon");
+  // buttonLike.innerHTML = '<i class="fa fa-heart fa-lg"><i>';
+  // buttonsSpan.appendChild(buttonLike);
   cartItemSpan.appendChild(buttonsSpan);
   imageElement = document.createElement("img");
   imageElement.className = "item-image";
@@ -151,14 +152,13 @@ var closeShoppingCart = () => {
   cartDiv = document.getElementById("shopping-cart");
   cartDiv.style.visibility = "hidden";
   cartDiv.style.height = "0px";
+  document.getElementsById('close-cart-tooltip').style.visibility = 'hidden';
 }
 
 function checkoutBackButton() {
   console.log('back button clicked');
   document.getElementById('seeds-layout').style.visibility = 'visible';
   document.getElementById('checkout-div').style.visibility = 'hidden'; 
-  
-
 }
 
 function sendOrder() {

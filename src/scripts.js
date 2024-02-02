@@ -109,4 +109,5 @@ function onAddItemToCart(productTag) {
     };
     cartItems[productTag] = cartItem;
   }
+  productTagQuantity.innerHTML = 0;
 }
