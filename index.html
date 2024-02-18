@@ -8,7 +8,7 @@
         <link href="css/tabs.css" rel="stylesheet" type="text/css">
         <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <script src="src/scripts.js" type="text/javascript"></script>
         <script src="src/cart.js" type="text/javascript" defer></script>
         <script type="text/javascript" src="scripts/seeds.js"></script>
@@ -88,7 +88,7 @@
                     <label for="phoneNumber">Phopne Number:</label><br>
                     <input type="text" id="phoneNumber" name="phoneNumber" value=""><br>
                     <label for="notes">Notes/Instructions:</label><br>
-                    <input type="textarea" name="notes" rows="5" cols="40"><br>
+                    <input type="textarea" id="notes" name="notes" rows="5" cols="40" value=""><br>
                     <hr />
                     <div id="checkout-order-items" class="checkout-order-items">
                     </div>

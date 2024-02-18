@@ -1,3 +1,6 @@
+import(JSON);
+var orderInformation = {};
+
 function expandCart() {
   var counter = 0;
   $("#cart").on("click", function () {
@@ -161,7 +164,39 @@ function checkoutBackButton() {
   document.getElementById('checkout-div').style.visibility = 'hidden'; 
 }
 
-function sendOrder() {
+var sendEmail = (message) => {
+  console.log(`Order message: \n ${message}`);
+
+  Email.send({
+    SecureToken: "cb792a7b-88dc-4a38-ac43-39447a90bd99",
+    To : 'julienelson632@gmail.com',
+    From : "rob99202@gmail.com",
+    Subject : "Order for Seeds",
+    Body : message
+  }).then(
+    message => alert(message)
+  );
+}
+
+var sendOrder = () => {
   console.log('Send Order button clicked');
+  try {
+    orderInformation.firstName = document.getElementById('firstName').value;
+    orderInformation.lastName = document.getElementById('lastName').value;
+    orderInformation.emailAddress = document.getElementById('emailAddress').value;
+    orderInformation.phoneNumber = document.getElementById('phoneNumber').value;
+    orderInformation.notes = document.getElementById('notes').value;
+    orderInformation.cartItems = JSON.parse(JSON.stringify(cartItems));
+
+    var message = `Order By Name: ${orderInformation.firstName} ${orderInformation.lastName} \n`;
+    message = message + `Email: ${orderInformation.emailAddress}\t Phone Number: ${orderInformation.phoneNumber}\n`;
+    message = message + `Order Notes: ${orderInformation.notes} \n Products Ordered ${JSON.stringify(cartItems)}`;
+    sendEmail(message);
+  } catch (exception) {
+    alert(exception);
+    console.log(exception);
+  }
+  
+  
 
 }
