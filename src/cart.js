@@ -168,14 +168,23 @@ var sendEmail = (message) => {
   console.log(`Order message: \n ${message}`);
 
   Email.send({
-    SecureToken: "cb792a7b-88dc-4a38-ac43-39447a90bd99",
-    To : 'julienelson632@gmail.com',
-    From : "rob99202@gmail.com",
+    SecureToken: "f9447bcb-8f9f-46b2-adac-954c20eb8449",
+    To: 'julienelson632@gmail.com',
+    Cc : 'rob99202@gmail.com',
+    From : "sommerkeit@hotmail.com",
     Subject : "Order for Seeds",
     Body : message
   }).then(
     message => alert(message)
   );
+}
+
+var parseCartItems = (cartItems) => {
+  var parsedCartItems = "";
+  Object.entries(cartItems).forEach(([key, value]) => {
+    parsedCartItems = parsedCartItems + `   ${key} quantity: ${value.quantity}<br>`;
+  });
+  return parsedCartItems;
 }
 
 var sendOrder = () => {
@@ -188,9 +197,9 @@ var sendOrder = () => {
     orderInformation.notes = document.getElementById('notes').value;
     orderInformation.cartItems = JSON.parse(JSON.stringify(cartItems));
 
-    var message = `Order By Name: ${orderInformation.firstName} ${orderInformation.lastName} \n`;
-    message = message + `Email: ${orderInformation.emailAddress}\t Phone Number: ${orderInformation.phoneNumber}\n`;
-    message = message + `Order Notes: ${orderInformation.notes} \n Products Ordered ${JSON.stringify(cartItems)}`;
+    var message = `Order By Name: ${orderInformation.firstName} ${orderInformation.lastName} <br/>`;
+    message = message + `Email: ${orderInformation.emailAddress}<br/> Phone Number: ${orderInformation.phoneNumber}<br/>`;
+    message = message + `Order Notes: ${orderInformation.notes} <br/> <b>Products Ordered:</b><br/>   ${parseCartItems(cartItems)}`;
     sendEmail(message);
   } catch (exception) {
     alert(exception);
